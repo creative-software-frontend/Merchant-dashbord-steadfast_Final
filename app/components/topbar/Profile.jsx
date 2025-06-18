@@ -3,9 +3,18 @@ import { useState, useRef, useEffect } from "react";
 import { FaUserCircle, FaKey, FaCog, FaChevronDown } from "react-icons/fa";
 import { FiUser } from "react-icons/fi";
 
+
 const ProfileMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
   const menuRef = useRef(null);
+  const [user, setUser] = useState(null);
+  const [showTooltip, setShowTooltip] = useState(false);
+  useEffect(() => {
+    const userInfo = localStorage.getItem("user");
+    if (userInfo) {
+      setUser(JSON.parse(userInfo));
+    }
+  }, []);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -23,10 +32,19 @@ const ProfileMenu = () => {
   return (
     <div className="relative" ref={menuRef}>
       <div
-        className="cursor-pointer p-3 rounded-full transition-all duration-300 bg-[#F5F5F5] flex items-center gap-2"
+        className="cursor-pointer relative  p-3 rounded-full transition-all duration-300 bg-[#F5F5F5] flex items-center gap-2"
         onClick={() => setIsOpen(!isOpen)}
+        
+        onMouseEnter={() => setShowTooltip(true)}
+        onMouseLeave={() => setShowTooltip(false)}
       >
-        <FaUserCircle className="text-xl text-secondary transition-colors duration-200" />
+         <FaUserCircle className="text-xl text-secondary transition-colors duration-200 cursor-pointer" />
+
+      {showTooltip && (
+        <div className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 bg-gray-800 text-white text-sm px-3 py-1 rounded shadow-lg whitespace-nowrap z-10">
+          {user?.name}
+        </div>
+      )}
       </div>
 
       {isOpen && (
