@@ -107,7 +107,7 @@ const Sidebar = ({ isOpen, onClose }) => {
                   className={`text-xl min-w-[20px] ${isActive ? "text-[#00b795]" : ""}`}
                 />
                 {isOpen && (
-                  <span className="text-[16px] capitalize text-primary">{label}</span>
+                  <span className="text-[16px] capitalize text-primary font-medium">{label}</span>
                 )}
               </Link>
             );
@@ -135,7 +135,7 @@ const Sidebar = ({ isOpen, onClose }) => {
                   className={`text-xl min-w-[20px] ${isActive ? "text-[#00b795]" : ""}`}
                 />
                 {isOpen && (
-                  <span className="text-[16px] capitalize text-primary">{label}</span>
+                  <span className="text-[16px] capitalize text-primary font-medium">{label}</span>
                 )}
               </Link>
             );
