@@ -111,7 +111,7 @@ const ParcelTable = () => {
 
   return (
     <div className="p-4 md:p-6 mt-8">
-      <h1 className="text-xl font-semibold mb-4">All Parcel</h1>
+      <h1 className="text-xl font-semibold mb-4">Consignments List</h1>
 
       <div className="flex flex-wrap gap-2 mb-6">
         {tabs.map((tab, idx) => (
