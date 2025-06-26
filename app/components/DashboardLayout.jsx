@@ -29,7 +29,7 @@ const DashboardLayout = ({ children }) => {
         <div className="flex flex-col min-h-screen bg-gray-100">
           <main className="flex-grow p-5">{children}</main>
           <footer className="text-center text-secondary text-[14px] border-t py-3 px-5 font-normal">
-            © 2025 SteadFast. All rights reserved
+            © 2025 Courier Lab. All rights reserved.
           </footer>
         </div>
       </div>
