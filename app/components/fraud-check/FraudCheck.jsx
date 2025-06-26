@@ -322,9 +322,13 @@ const FraudCheck = () => {
         <div className="flex justify-center gap-2 mb-4">
       <input
         type="text"
-        placeholder="Enter Customer ID"
+        placeholder="Enter Customer Phone Number"
         className="border border-gray rounded px-4 py-2 w-72 focus:outline-none"
       />
+       <button className="button-primary cursor-pointer text-white px-4 py-2 rounded flex items-center gap-2">
+        <FaSearch className="text-white" />
+        Null
+      </button>
       <button className="button-primary cursor-pointer text-white px-4 py-2 rounded flex items-center gap-2">
         <FaSearch className="text-white" />
         Search

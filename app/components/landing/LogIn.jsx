@@ -418,7 +418,7 @@ const Login = () => {
                     />
                   </svg>
                 )}
-                <span className="text-[14px] font-medium text-gray-700">
+                <span className="text-[14px]  font-medium text-gray-700">
                   {tLogin("rememberMe")}
                 </span>
               </label>
