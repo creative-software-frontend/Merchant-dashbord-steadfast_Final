@@ -1,4 +1,14 @@
+'use client'
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 const TrackingParcel = () => {
+    const [query, setQuery] = useState('');
+  const router = useRouter();
+
+  const handleSearch = () => {
+    if (!query.trim()) return;
+    router.push(`/dashboard/tracking-parcel/details?phone=${encodeURIComponent(query)}`);
+  };
   return (
     <div>
       <h2 className="text-center text-primary text-2xl font-medium">
@@ -9,11 +19,14 @@ const TrackingParcel = () => {
       </p>
       <div className="flex max-w-xl mx-auto mt-10">
         <input
+          onChange={(e) => setQuery(e.target.value)}
           type="text"
           placeholder="Search Tracking Code here..."
           className="flex-grow px-4 py-3 border bg-primary border-gray rounded-l-md text-secondary focus:outline-none"
         />
-        <button className="button-primary  px-6 py-2 rounded-r-md cursor-pointer">
+        <button
+         onClick={handleSearch}
+         className="button-primary  px-6 py-2 rounded-r-md cursor-pointer">
           Search
         </button>
       </div>
@@ -22,3 +35,8 @@ const TrackingParcel = () => {
 };
 
 export default TrackingParcel;
+
+
+
+
+

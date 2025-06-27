@@ -7,12 +7,12 @@ module.exports = {
     theme: {
       extend: {
         colors: {
-          // এখানে আপনার কাস্টম কালার যোগ করুন
-          'primary': '#3a86ff',      // নীল
-          'secondary': '#8338ec',   // বেগুনি
-          'accent': '#ff006e',      // গোলাপি
-          'dark': '#1e293b',       // গাঢ় নীল
-          'light': '#f8fafc',      // হালকা সাদা
+         
+          'primary': '#3a86ff',      
+          'secondary': '#8338ec',   
+          'accent': '#ff006e',      
+          'dark': '#1e293b',       
+          'light': '#f8fafc',      
         },
       },
     },
