@@ -1,28 +1,26 @@
-
 import Image from "next/image";
 
 const performanceData = [
   {
     title: "Delivery Performance",
     buttonText: "view graph",
-    imageSrc: "/img/chart-view/performance.png"
+    imageSrc: "/img/chart-view/performance.png",
   },
   {
     title: "Parcel Summary",
     buttonText: "view summary",
-    imageSrc: "/img/chart-view/parcel.png"
-  }
+    imageSrc: "/img/chart-view/parcel.png",
+  },
 ];
 
 const ChartView = () => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pb-2">
       {performanceData.map((item, index) => (
-        <div 
+        <div
           key={index}
           className="md:flex justify-between gap-3 px-5 py-6 md:py-10 bg-primary border border-gray rounded-md"
         >
-          {/* Left side - title and desktop button */}
           <div className="md:block">
             <h2 className="text-[20px] text-primary md:text-[24px] font-semibold whitespace-nowrap">
               {item.title}
@@ -31,8 +29,7 @@ const ChartView = () => {
               {item.buttonText}
             </button>
           </div>
-          
-          {/* Right side - mobile button and image */}
+
           <div className="flex items-center justify-between mt-4 md:mt-0 md:block">
             <button className="md:hidden text-[14px] font-medium capitalize button-primary px-3 py-2.5  rounded-md cursor-pointer">
               {item.buttonText}

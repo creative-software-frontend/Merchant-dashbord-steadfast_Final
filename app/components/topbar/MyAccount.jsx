@@ -75,7 +75,6 @@ const MyAccount = () => {
     { label: "Email", value: user.email },
     { label: "Mobile", value: user.mobile },
     { label: "Address", value: user.address },
-  
   ];
 
   return (
