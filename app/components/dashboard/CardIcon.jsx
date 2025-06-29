@@ -1,23 +1,25 @@
 'use client';
 import Image from "next/image";
+import Link from "next/link";
 
 const cardData = [
-  { title: "Add Parcel", icon: "/img/card-icon/card_md_plus.png" },
-  { title: "Pickup Request", icon: "/img/card-icon/card_md_pick_req.png" },
-  { title: "Track Parcel", icon: "/img/card-icon/card_md_location.png" },
-  { title: "Delivery List", icon: "/img/card-icon/card_md_wallet.png" },
-  { title: "Manage Area", icon: "/img/card-icon/card_md_today_enrty.png" },
-  { title: "Settings", icon: "/img/card-icon/card_md_support.png" },
-  { title: "Payment Request", icon: "/img/card-icon/card_md_support.png" },
-  { title: "Settings", icon: "/img/card-icon/card_md_support.png" },
+  { title: "Add Parcel", href:"/dashboard/add-parcel", icon: "/img/card-icon/card_md_plus.png" },
+  { title: "Pickup Request",  href:"#", icon: "/img/card-icon/card_md_pick_req.png" },
+  { title: "Payment Request",  href:"#", icon: "/img/card-icon/card_md_wallet.png" },
+  { title: "Delivery List",  href:"#", icon: "/img/card-icon/card_md_support.png" },
+  { title: "Manage Area",  href:"#", icon: "/img/card-icon/card_md_today_enrty.png" },
+  { title: "Settings",  href:"#", icon: "/img/card-icon/card_md_support.png" },
+  { title: "Track Parcel",  href:"#", icon: "/img/card-icon/card_md_location.png" },
+  { title: "Settings",  href:"#", icon: "/img/card-icon/card_md_support.png" },
 ];
 
 const CardIcon = ({ onCardClick }) => {
   return (
     <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
       {cardData.map((card, index) => (
+       <Link key={index} href={card.href}>
         <div
-          key={index}
+          
           onClick={() => onCardClick(card.title)}
           className="bg-primary p-4 border border-gray rounded-lg cursor-pointer flex flex-col items-center"
         >
@@ -33,6 +35,7 @@ const CardIcon = ({ onCardClick }) => {
             {card.title}
           </h3>
         </div>
+       </Link>
       ))}
     </div>
   );

@@ -25,7 +25,7 @@ const mainItems = [
   { icon: MdAddBox, label: "Add Parcel", href: "/dashboard/add-parcel" },
   { icon: FaBox, label: "Consignment", href: "/dashboard/consignments" },
   { icon: FaUserCheck, label: "Fraud Check", href: "/dashboard/fraud-check" },
-  { icon: IoLogOut, label: "Pickup Requests", href: "/dashboard/pickup-requests" },
+  // { icon: IoLogOut, label: "Pickup Requests", href: "/dashboard/pickup-requests" },
   { icon: MdOutlineInventory2, label: "Inventory", href: "/dashboard/inventory" },
   { icon: TbTableImport, label: " Bulk Import", href: "/dashboard/bulk-import" },
   { icon: FaCalculator, label: "Pricing", href: "/dashboard/pricing" },

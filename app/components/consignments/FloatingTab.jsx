@@ -41,11 +41,11 @@ const FloatingTab = () => {
 
         <div className="h-6 w-px bg-gray-300"></div>
 
-        <Link href="/dashboard/pickup-requests">
+        <Link href="/dashboard/fraud-check">
           <div className="flex items-center gap-2">
             <FaFileImport className="text-yellow-500 text-md" />
             <span className="text-sm whitespace-nowrap text-primary">
-              Pickup request
+              Fraud Check
             </span>
           </div>
         </Link>
