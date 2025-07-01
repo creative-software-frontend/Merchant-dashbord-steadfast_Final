@@ -65,6 +65,9 @@ const Navbar = () => {
               <Link href="#" className="cursor-pointer font-medium text-primary text-[16px] hover:text-success transition-all" prefetch>
                 {tMenu('services')}
               </Link>
+               <Link href="/landing/coverage-area" className="cursor-pointer font-medium text-primary text-[16px] hover:text-success transition-all" prefetch>
+                {tMenu('coverage-area')}
+              </Link>
               <Link href="/#contact" className="cursor-pointer font-medium text-primary text-[16px] hover:text-success transition-all" prefetch>
                 {tMenu('contact')}
               </Link>
