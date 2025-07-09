@@ -64,7 +64,7 @@ const DeliveryTable = () => {
   const totalPages = Math.ceil(districts.length / rowsPerPage);
 
   return (
-    <div className=" container mx-auto px-4 md:mt-28">
+    <div className=" container mx-auto px-4 mt-20 md:mt-28">
       <h2 className="text-xl font-semibold mb-4">District List </h2>
 
       <div className="flex justify-between items-center mb-4">

@@ -1,29 +1,25 @@
 
-
-import { NextResponse } from 'next/server';
+import axios from "axios";
 
 export async function GET(request) {
-    const authHeader = request.headers.get('authorization');
-    if (!authHeader) {
-        return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-    }
+  try {
+    const response = await axios.get("https://system.packnexa.com/api/user-info", {
+      headers: {
+        Authorization: `Bearer ${process.env.PACKNEXA_TOKEN}`, 
+      },
+    });
 
-    try {
-        const res = await fetch('https://system.packnexa.com/api/user-info', {
-            headers: {
-                Authorization: authHeader,
-                Accept: 'application/json',
-            },
-        });
-
-        const data = await res.json();
-
-        if (!res.ok) {
-            return NextResponse.json({ error: data.error || 'API error' }, { status: res.status });
-        }
-
-        return NextResponse.json(data);
-    } catch (error) {
-        return NextResponse.json({ error: error.message || 'Internal Server Error' }, { status: 500 });
-    }
+    return new Response(JSON.stringify(response.data), {
+      status: 200,
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+  } catch (error) {
+    console.error("User info fetch failed:", error.response?.data || error.message);
+    return new Response(
+      JSON.stringify({ message: "User info fetch failed", error: error.message }),
+      { status: error.response?.status || 500 }
+    );
+  }
 }

@@ -40,7 +40,7 @@ const MyAccount = () => {
         });
 
         const data = await response.json();
-        console.log("API response:", data);
+       
 
         if (!response.ok) {
           const errMsg = data.error || "API fetch failed";

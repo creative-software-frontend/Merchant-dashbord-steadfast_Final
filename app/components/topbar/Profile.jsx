@@ -49,7 +49,7 @@ const ProfileMenu = () => {
   };
 
   return (
-    <div className="relative z-50" ref={menuRef}>
+    <div className="relative z-[1000]" ref={menuRef}>
       <ToastContainer />
       <div
         className="cursor-pointer relative p-3 rounded-full transition-all duration-300 bg-[#F5F5F5] flex items-center gap-2"
