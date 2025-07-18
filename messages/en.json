@@ -166,7 +166,9 @@
       "accountLabelOne": "By clicking Sign Up you are agreeing with our",
       "accountLabelTwo": "Terms & Conditions",
       "existingAccount": "Already have an account?",
-      "loginLink": "Login here"
+      "loginLink": "Login here",
+      "area_label_one": "Area",
+      "area_label_two": "Area_district"
     },
     "dashboard": {
       "sidebar": {

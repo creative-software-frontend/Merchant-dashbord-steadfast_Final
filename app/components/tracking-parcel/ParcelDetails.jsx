@@ -176,3 +176,26 @@ export default function ParcelDetails({ phone }) {
     </div>
   );
 }
+
+
+
+
+
+
+
+
+
+
+
+
+// // components/OrderDetails.jsx
+// const OrderDetails = ({ order }) => (
+//   <div className="mt-6 p-4 border rounded bg-white shadow">
+//     <h2 className="text-lg font-bold mb-2">Order Details</h2>
+//     {Object.entries(order).map(([key, value]) => (
+//       <p key={key}><strong>{key}:</strong> {typeof value === 'object' ? JSON.stringify(value) : value}</p>
+//     ))}
+//   </div>
+// );
+// export default OrderDetails;
+

@@ -164,7 +164,9 @@
       "accountLabelOne": "সাইন আপ বাটনে ক্লিক করার মাধ্যমে আপনি আমাদের",
       "accountLabelTwo": "শর্তাবলী ও নীতিমালা",
       "existingAccount": "ইতিমধ্যে অ্যাকাউন্ট আছে?",
-      "loginLink": "এখানে লগইন করুন"
+      "loginLink": "এখানে লগইন করুন",
+      "area_label_one": "এলাকা",
+      "area_label_two": "এলাকা/জেলা"
     },
     "dashboard": {
       "sidebar": {

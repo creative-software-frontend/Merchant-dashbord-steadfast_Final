@@ -49,7 +49,7 @@ const ProfileMenu = () => {
   };
 
   return (
-    <div className="relative z-[1000]" ref={menuRef}>
+    <div className="relative z-[1000] " ref={menuRef}>
       <ToastContainer />
       <div
         className="cursor-pointer relative p-3 rounded-full transition-all duration-300 bg-[#F5F5F5] flex items-center gap-2"
@@ -59,7 +59,7 @@ const ProfileMenu = () => {
       >
         <FaUserCircle className="text-xl text-secondary transition-colors duration-200 cursor-pointer" />
         {showTooltip && (
-          <div className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 bg-gray-800 text-white text-sm px-3 py-1 rounded shadow-lg whitespace-nowrap z-10">
+          <div className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 bg-gray-800 text-white text-sm px-3 py-1 rounded shadow-lg whitespace-nowrap z-[1000]">
             {user?.name}
           </div>
         )}

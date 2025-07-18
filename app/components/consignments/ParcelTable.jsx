@@ -21,7 +21,7 @@ const ParcelTable = () => {
 
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 20;
-  const [paginationGroup, setPaginationGroup] = useState(1); // 1 group = 5 pages
+  const [paginationGroup, setPaginationGroup] = useState(1); 
 
   useEffect(() => {
     const getData = async () => {

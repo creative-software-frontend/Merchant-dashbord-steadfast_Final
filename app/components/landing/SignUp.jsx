@@ -1,12 +1,224 @@
+// import { FiUser, FiMail, FiLock, FiPhone } from "react-icons/fi";
+// import { FaLocationDot } from "react-icons/fa6";
+// import Image from "next/image";
+// import { useTranslations } from "next-intl";
+// import SignUpBtn from "./SignUpBtn";
+// const SignUp = () => {
+//    const tSignUp = useTranslations("signupPage");
+//   return (
+//     <div className=" pt-20 px-4">
+//       <div className="min-h-screen flex flex-col items-center justify-center py-6">
+//         <div className="w-full md:w-[40%]">
+//           <a href="javascript:void(0)">
+//             <Image
+//               src="/img/signup.png"
+//               alt="logo"
+//               className="w-20 mb-3 mx-auto block"
+//               width={500}
+//               height={500}
+//             />
+//           </a>
+
+//           <h2 className="text-gray-900 text-center text-3xl font-semibold">
+//              {tSignUp("title")}
+//           </h2>
+
+//           <div className="mt-12 space-y-6">
+//             <div className="relative flex items-center">
+//               <input
+//                 type="text"
+//                 placeholder={tSignUp("nameLabelOne")}
+//                 className="w-full text-gray-800 text-md border border-gray-300 px-4 py-3 rounded-md outline-[#00b795]"
+//               />
+//               <FiUser className="absolute right-4 text-gray-400" size={20} />
+//             </div>
+
+//             <div className="relative flex items-center">
+//               <input
+//                 type="text"
+//                 placeholder={tSignUp("nameLabelTwo")}
+//                 className="w-full text-gray-800 text-md border border-gray-300 px-4 py-3 rounded-md outline-[#00b795]"
+//               />
+//               <FiUser className="absolute right-4 text-gray-400" size={20} />
+//             </div>
+
+//             <div className="relative flex items-center">
+//               <textarea
+//                 placeholder={tSignUp("locationLabel")}
+//                 rows="6"
+//                 className="w-full h-20 text-gray-800 text-md border border-gray-300 px-4 py-3 rounded-md outline-[#00b795]"
+//               />
+//               <FaLocationDot
+//                 className="absolute right-4 text-gray-400"
+//                 size={20}
+//               />
+//             </div>
+
+//             <div className="relative flex items-center">
+//               <input
+//                 type="email"
+//                 placeholder={tSignUp("emailLabel")}
+//                 className="w-full text-gray-800 text-md border border-gray-300 px-4 py-3 rounded-md outline-[#00b795]"
+//               />
+//               <FiMail className="absolute right-4 text-gray-400" size={20} />
+//             </div>
+
+//             <div className="relative flex items-center">
+//               <input
+//                 type="text"
+//                 placeholder={tSignUp("phoneLabel")}
+//                 className="w-full text-gray-800 text-md border border-gray-300 px-4 py-3 rounded-md outline-[#00b795]"
+//               />
+//               <FiPhone className="absolute right-4 text-gray-400" size={20} />
+//             </div>
+
+//             <div className="flex gap-3">
+//               <div className="relative flex items-center w-full">
+//                 <input
+//                   type="text"
+//                   placeholder={tSignUp("area_label_one")}
+//                   className="w-full text-gray-800 text-md border border-gray-300 px-4 py-3 rounded-md outline-[#00b795]"
+//                 />
+//                 <FiLock className="absolute right-4 text-gray-400" size={20} />
+//               </div>
+//               <div className="relative flex items-center w-full">
+//                 <input
+//                   type="text"
+//                   placeholder={tSignUp("area_label_two")}
+//                   className="w-full text-gray-800 text-md border border-gray-300 px-4 py-3 rounded-md outline-[#00b795]"
+//                 />
+//                 <FiLock className="absolute right-4 text-gray-400" size={20} />
+//               </div>
+//             </div>
+
+//             <div className="flex gap-3">
+//               <div className="relative flex items-center w-full">
+//                 <input
+//                   type="password"
+//                   placeholder={tSignUp("passwordLabel")}
+//                   className="w-full text-gray-800 text-md border border-gray-300 px-4 py-3 rounded-md outline-[#00b795]"
+//                 />
+//                 <FiLock className="absolute right-4 text-gray-400" size={20} />
+//               </div>
+//               {/* <div className="relative flex items-center w-full">
+//                 <input
+//                   type="password"
+//                   placeholder={tSignUp("confirmPasswordLabel")}
+//                   className="w-full text-gray-800 text-md border border-gray-300 px-4 py-3 rounded-md outline-[#00b795]"
+//                 />
+//                 <FiLock className="absolute right-4 text-gray-400" size={20} />
+//               </div> */}
+//             </div>
+
+//             <div>
+//               <button
+//                 type="button"
+//                 className="w-full cursor-pointer py-2 px-4 text-[15px] font-medium tracking-wide rounded-md text-white bg-[#00b795] hover:bg-[#00a285] focus:outline-none"
+//               >
+//                 {tSignUp("signupButton")}
+//               </button>
+//               <p className="text-gray-800 text-md text-center mt-1">
+//                  {tSignUp("accountLabelOne")}
+//                 <span className="font-semibold text-gray-800 hover:text-[#00b795] px-1 cursor-pointer">
+//                      {tSignUp("accountLabelTwo")}
+//                 </span>
+//               </p>
+//               <div className="flex items-center mt-10 justify-center">
+//                 <p className="text-gray-800 text-lg font-medium text-center ">
+//                      {tSignUp("existingAccount")}
+//                 </p>
+//                 <SignUpBtn  />
+//               </div>
+//             </div>
+//           </div>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default SignUp;
+
+
+
+
+'use client';
+import { useState } from "react";
 import { FiUser, FiMail, FiLock, FiPhone } from "react-icons/fi";
 import { FaLocationDot } from "react-icons/fa6";
+import { PiMapPinSimpleAreaFill } from "react-icons/pi";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import SignUpBtn from "./SignUpBtn";
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+
 const SignUp = () => {
-   const tSignUp = useTranslations("signupPage");
+  const tSignUp = useTranslations("signupPage");
+
+  const [formData, setFormData] = useState({
+    name: "",
+    business_name: "",
+    address: "",
+    email: "",
+    mobile: "",
+    area: "",
+    district: "",
+    password: "",
+  });
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async () => {
+    try {
+      const form = new FormData();
+
+     
+      Object.entries(formData).forEach(([key, value]) => {
+        form.append(key, value);
+      });
+
+      // Add static fields required by API
+      form.append("page_link", "tgijh");
+      form.append("website_link", "hg");
+      form.append("daily_volume", "3");
+      form.append("category", "courier");
+
+      const res = await fetch("https://system.packnexa.com/api/register-merchant", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+        },
+        body: form,
+      });
+
+      const data = await res.json();
+      console.log(" API Response:", data);
+
+      if (res.ok && data.success) {
+        alert(" Registration successful: " + data.message);
+      } else {
+        console.log(" Registration failed:", data);
+        const extractErrorMessages = (obj) => {
+          if (!obj || typeof obj !== "object") return "Unknown error";
+          const messages = Object.values(obj).flat();
+          return messages.join(", ");
+        };
+
+        const errorMessage = extractErrorMessages(data.message);
+        throw new Error(errorMessage || "Unauthorized or invalid request");
+      }
+    } catch (error) {
+      console.error(" Submit error:", error);
+      alert("Something went wrong: " + error.message);
+    }
+  };
+
   return (
-    <div className=" pt-20 px-4">
+    <div className="pt-20 px-4">
+      <ToastContainer/>
       <div className="min-h-screen flex flex-col items-center justify-center py-6">
         <div className="w-full md:w-[40%]">
           <a href="javascript:void(0)">
@@ -20,95 +232,136 @@ const SignUp = () => {
           </a>
 
           <h2 className="text-gray-900 text-center text-3xl font-semibold">
-             {tSignUp("title")}
+            {tSignUp("title")}
           </h2>
 
           <div className="mt-12 space-y-6">
+            {/* Name */}
             <div className="relative flex items-center">
               <input
                 type="text"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
                 placeholder={tSignUp("nameLabelOne")}
-                className="w-full text-gray-800 text-md border border-gray-300 px-4 py-3 rounded-md outline-[#00b795]"
+                className="w-full border border-gray-300 px-4 py-3 rounded-md outline-[#00b795]"
               />
               <FiUser className="absolute right-4 text-gray-400" size={20} />
             </div>
 
+            {/* Business Name */}
             <div className="relative flex items-center">
               <input
                 type="text"
+                name="business_name"
+                value={formData.business_name}
+                onChange={handleChange}
                 placeholder={tSignUp("nameLabelTwo")}
-                className="w-full text-gray-800 text-md border border-gray-300 px-4 py-3 rounded-md outline-[#00b795]"
+                className="w-full border border-gray-300 px-4 py-3 rounded-md outline-[#00b795]"
               />
               <FiUser className="absolute right-4 text-gray-400" size={20} />
             </div>
 
+            {/* Address */}
             <div className="relative flex items-center">
               <textarea
+                name="address"
+                value={formData.address}
+                onChange={handleChange}
                 placeholder={tSignUp("locationLabel")}
-                rows="6"
-                className="w-full h-20 text-gray-800 text-md border border-gray-300 px-4 py-3 rounded-md outline-[#00b795]"
+                rows="3"
+                className="w-full border border-gray-300 px-4 py-3 rounded-md outline-[#00b795]"
               />
-              <FaLocationDot
-                className="absolute right-4 text-gray-400"
-                size={20}
-              />
+              <FaLocationDot className="absolute right-4 text-gray-400" size={20} />
             </div>
 
+            {/* Email */}
             <div className="relative flex items-center">
               <input
                 type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
                 placeholder={tSignUp("emailLabel")}
-                className="w-full text-gray-800 text-md border border-gray-300 px-4 py-3 rounded-md outline-[#00b795]"
+                className="w-full border border-gray-300 px-4 py-3 rounded-md outline-[#00b795]"
               />
               <FiMail className="absolute right-4 text-gray-400" size={20} />
             </div>
 
+            {/* Mobile */}
             <div className="relative flex items-center">
               <input
                 type="text"
+                name="mobile"
+                value={formData.mobile}
+                onChange={handleChange}
                 placeholder={tSignUp("phoneLabel")}
-                className="w-full text-gray-800 text-md border border-gray-300 px-4 py-3 rounded-md outline-[#00b795]"
+                className="w-full border border-gray-300 px-4 py-3 rounded-md outline-[#00b795]"
               />
               <FiPhone className="absolute right-4 text-gray-400" size={20} />
             </div>
 
+            {/* Area & District */}
             <div className="flex gap-3">
               <div className="relative flex items-center w-full">
                 <input
-                  type="password"
-                  placeholder={tSignUp("passwordLabel")}
-                  className="w-full text-gray-800 text-md border border-gray-300 px-4 py-3 rounded-md outline-[#00b795]"
+                  type="text"
+                  name="area"
+                  value={formData.area}
+                  onChange={handleChange}
+                  placeholder={tSignUp("area_label_one")}
+                  className="w-full border border-gray-300 px-4 py-3 rounded-md outline-[#00b795]"
                 />
-                <FiLock className="absolute right-4 text-gray-400" size={20} />
+                <PiMapPinSimpleAreaFill className="absolute right-4 text-gray-400" size={20} />
               </div>
               <div className="relative flex items-center w-full">
                 <input
-                  type="password"
-                  placeholder={tSignUp("confirmPasswordLabel")}
-                  className="w-full text-gray-800 text-md border border-gray-300 px-4 py-3 rounded-md outline-[#00b795]"
+                  type="text"
+                  name="district"
+                  value={formData.district}
+                  onChange={handleChange}
+                  placeholder={tSignUp("area_label_two")}
+                  className="w-full border border-gray-300 px-4 py-3 rounded-md outline-[#00b795]"
                 />
-                <FiLock className="absolute right-4 text-gray-400" size={20} />
+                <PiMapPinSimpleAreaFill className="absolute right-4 text-gray-400" size={20} />
               </div>
             </div>
 
+            {/* Password */}
+            <div className="relative flex items-center">
+              <input
+                type="password"
+                name="password"
+                value={formData.password}
+                onChange={handleChange}
+                placeholder={tSignUp("passwordLabel")}
+                className="w-full border border-gray-300 px-4 py-3 rounded-md outline-[#00b795]"
+              />
+              <FiLock className="absolute right-4 text-gray-400" size={20} />
+            </div>
+
+            {/* Submit Button */}
             <div>
               <button
                 type="button"
-                className="w-full cursor-pointer py-2 px-4 text-[15px] font-medium tracking-wide rounded-md text-white bg-[#00b795] hover:bg-[#00a285] focus:outline-none"
+                onClick={handleSubmit}
+                className="w-full py-2 px-4 text-[15px] font-medium rounded-md text-white bg-[#00b795] hover:bg-[#009f81] focus:outline-none"
               >
                 {tSignUp("signupButton")}
               </button>
-              <p className="text-gray-800 text-md text-center mt-1">
-                 {tSignUp("accountLabelOne")}
-                <span className="font-semibold text-gray-800 hover:text-[#00b795] px-1 cursor-pointer">
-                     {tSignUp("accountLabelTwo")}
+
+              <p className="text-center mt-1 text-gray-800 text-md">
+                {tSignUp("accountLabelOne")}
+                <span className="font-semibold hover:text-[#00b795] cursor-pointer px-1">
+                  {tSignUp("accountLabelTwo")}
                 </span>
               </p>
+
               <div className="flex items-center mt-10 justify-center">
-                <p className="text-gray-800 text-lg font-medium text-center ">
-                     {tSignUp("existingAccount")}
+                <p className="text-gray-800 text-lg font-medium">
+                  {tSignUp("existingAccount")}
                 </p>
-                <SignUpBtn  />
+                <SignUpBtn />
               </div>
             </div>
           </div>
@@ -119,209 +372,3 @@ const SignUp = () => {
 };
 
 export default SignUp;
-
-
-
-
-// "use client";
-
-// import { useState } from "react";
-// import { FiUser, FiMail, FiLock, FiPhone } from "react-icons/fi";
-// import { FaLocationDot } from "react-icons/fa6";
-// import Image from "next/image";
-// import { useTranslations } from "next-intl";
-// import { useRouter } from "next/navigation";
-// import SignUpBtn from "./SignUpBtn";
-
-// const SignUp = () => {
-//   const tSignUp = useTranslations("signupPage");
-//   const router = useRouter();
-
-//   const [firstName, setFirstName] = useState("");
-//   const [lastName, setLastName] = useState("");
-//   const [address, setAddress] = useState("");
-//   const [email, setEmail] = useState("");
-//   const [phone, setPhone] = useState("");
-//   const [password, setPassword] = useState("");
-//   const [confirmPassword, setConfirmPassword] = useState("");
-//   const [error, setError] = useState("");
-//   const [loading, setLoading] = useState(false);
-
-//   const handleSignUp = async () => {
-//     setLoading(true);
-//     setError("");
-
-//     if (password !== confirmPassword) {
-//       setError("Passwords do not match.");
-//       setLoading(false);
-//       return;
-//     }
-
-//     try {
-//       const res = await fetch("https://system.packnexa.com/api/register-merchant", {
-//         method: "POST",
-//         headers: {
-//           "Content-Type": "application/x-www-form-urlencoded",
-//         },
-//         body: new URLSearchParams({
-//           name: `${firstName} ${lastName}`,
-//           email,
-//           phone,
-//           password,
-//           confirm_password: confirmPassword,
-//           address,
-//         }),
-//       });
-
-//       const data = await res.json();
-
-//       if (res.ok) {
-//         localStorage.setItem("token", data.token);
-//         localStorage.setItem("user", JSON.stringify(data.user));
-//         router.push("/dashboard");
-//       } else {
-//         const errorMsg =
-//           typeof data.message === "string"
-//             ? data.message
-//             : JSON.stringify(data.message || "Registration failed.");
-//         setError(errorMsg);
-//       }
-//     } catch (err) {
-//       setError("Something went wrong. Please try again.");
-//     } finally {
-//       setLoading(false);
-//     }
-//   };
-
-//   return (
-//     <div className="pt-20 px-4">
-//       <div className="min-h-screen flex flex-col items-center justify-center py-6">
-//         <div className="w-full md:w-[40%]">
-//           <Image
-//             src="/img/signup.png"
-//             alt="logo"
-//             className="w-20 mb-3 mx-auto block"
-//             width={500}
-//             height={500}
-//           />
-
-//           <h2 className="text-gray-900 text-center text-3xl font-semibold">
-//             {tSignUp("title")}
-//           </h2>
-
-//           {error && (
-//             <p className="text-red-500 text-center mt-3 text-sm break-words">
-//               {error}
-//             </p>
-//           )}
-
-//           <div className="mt-12 space-y-6">
-//             <div className="relative flex items-center">
-//               <input
-//                 type="text"
-//                 placeholder={tSignUp("nameLabelOne")}
-//                 value={firstName}
-//                 onChange={(e) => setFirstName(e.target.value)}
-//                 className="w-full border border-gray-300 px-4 py-3 rounded-md outline-[#00b795]"
-//               />
-//               <FiUser className="absolute right-4 text-gray-400" size={20} />
-//             </div>
-
-//             <div className="relative flex items-center">
-//               <input
-//                 type="text"
-//                 placeholder={tSignUp("nameLabelTwo")}
-//                 value={lastName}
-//                 onChange={(e) => setLastName(e.target.value)}
-//                 className="w-full border border-gray-300 px-4 py-3 rounded-md outline-[#00b795]"
-//               />
-//               <FiUser className="absolute right-4 text-gray-400" size={20} />
-//             </div>
-
-//             <div className="relative flex items-center">
-//               <textarea
-//                 placeholder={tSignUp("locationLabel")}
-//                 value={address}
-//                 onChange={(e) => setAddress(e.target.value)}
-//                 rows={6}
-//                 className="w-full text-gray-800 border border-gray-300 px-4 py-3 rounded-md outline-[#00b795]"
-//               />
-//               <FaLocationDot className="absolute right-4 text-gray-400" size={20} />
-//             </div>
-
-//             <div className="relative flex items-center">
-//               <input
-//                 type="email"
-//                 placeholder={tSignUp("emailLabel")}
-//                 value={email}
-//                 onChange={(e) => setEmail(e.target.value)}
-//                 className="w-full border border-gray-300 px-4 py-3 rounded-md outline-[#00b795]"
-//               />
-//               <FiMail className="absolute right-4 text-gray-400" size={20} />
-//             </div>
-
-//             <div className="relative flex items-center">
-//               <input
-//                 type="text"
-//                 placeholder={tSignUp("phoneLabel")}
-//                 value={phone}
-//                 onChange={(e) => setPhone(e.target.value)}
-//                 className="w-full border border-gray-300 px-4 py-3 rounded-md outline-[#00b795]"
-//               />
-//               <FiPhone className="absolute right-4 text-gray-400" size={20} />
-//             </div>
-
-//             <div className="flex gap-3">
-//               <div className="relative flex items-center w-full">
-//                 <input
-//                   type="password"
-//                   placeholder={tSignUp("passwordLabel")}
-//                   value={password}
-//                   onChange={(e) => setPassword(e.target.value)}
-//                   className="w-full border border-gray-300 px-4 py-3 rounded-md outline-[#00b795]"
-//                 />
-//                 <FiLock className="absolute right-4 text-gray-400" size={20} />
-//               </div>
-
-//               <div className="relative flex items-center w-full">
-//                 <input
-//                   type="password"
-//                   placeholder={tSignUp("confirmPasswordLabel")}
-//                   value={confirmPassword}
-//                   onChange={(e) => setConfirmPassword(e.target.value)}
-//                   className="w-full border border-gray-300 px-4 py-3 rounded-md outline-[#00b795]"
-//                 />
-//                 <FiLock className="absolute right-4 text-gray-400" size={20} />
-//               </div>
-//             </div>
-
-//             <button
-//               type="button"
-//               onClick={handleSignUp}
-//               disabled={loading}
-//               className="w-full py-2 px-4 rounded-md text-white bg-[#00b795] hover:bg-[#00a285] focus:outline-none"
-//             >
-//               {loading ? "Signing up..." : tSignUp("signupButton")}
-//             </button>
-
-//             <p className="text-center mt-1 text-gray-800 text-sm">
-//               {tSignUp("accountLabelOne")}
-//               <span className="font-semibold hover:text-[#00b795] cursor-pointer ml-1">
-//                 {tSignUp("accountLabelTwo")}
-//               </span>
-//             </p>
-
-//             <div className="flex items-center justify-center mt-10">
-//               <p className="text-gray-800 text-md font-medium">
-//                 {tSignUp("existingAccount")}
-//               </p>
-//               <SignUpBtn />
-//             </div>
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default SignUp;
