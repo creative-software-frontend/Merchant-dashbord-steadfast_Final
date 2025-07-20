@@ -141,9 +141,8 @@
 
 
 
-
-'use client';
-import { useState } from "react";
+"use client";
+import { useEffect, useState } from "react";
 import { FiUser, FiMail, FiLock, FiPhone } from "react-icons/fi";
 import { FaLocationDot } from "react-icons/fa6";
 import { PiMapPinSimpleAreaFill } from "react-icons/pi";
@@ -151,10 +150,13 @@ import Image from "next/image";
 import { useTranslations } from "next-intl";
 import SignUpBtn from "./SignUpBtn";
 import { ToastContainer, toast } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
 
 const SignUp = () => {
   const tSignUp = useTranslations("signupPage");
+
+  const [districts, setDistricts] = useState([]);
+  const [areas, setAreas] = useState([]);
 
   const [formData, setFormData] = useState({
     name: "",
@@ -167,76 +169,111 @@ const SignUp = () => {
     password: "",
   });
 
+  useEffect(() => {
+    const fetchDistricts = async () => {
+      const res = await fetch("https://system.packnexa.com/api/distList");
+      const data = await res.json();
+      if (data.Status) {
+        setDistricts(data.data);
+      }
+    };
+    fetchDistricts();
+  }, []);
+
+  useEffect(() => {
+    const fetchAreas = async () => {
+      if (formData.district) {
+        const res = await fetch(
+          `https://system.packnexa.com/api/dist-area?id=${formData.district}`
+        );
+        const data = await res.json();
+        if (data.Status) {
+          setAreas(data.data);
+        }
+      }
+    };
+    fetchAreas();
+  }, [formData.district]);
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async () => {
     try {
-      const form = new FormData();
+      // console.log("Submitted Form Data:", formData);
 
-     
+      const form = new FormData();
       Object.entries(formData).forEach(([key, value]) => {
         form.append(key, value);
       });
 
-      // Add static fields required by API
+      // Static fields
       form.append("page_link", "tgijh");
       form.append("website_link", "hg");
       form.append("daily_volume", "3");
       form.append("category", "courier");
 
-      const res = await fetch("https://system.packnexa.com/api/register-merchant", {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-        },
-        body: form,
-      });
+      const res = await fetch(
+        "https://system.packnexa.com/api/register-merchant",
+        {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+          },
+          body: form,
+        }
+      );
 
       const data = await res.json();
-      console.log(" API Response:", data);
 
       if (res.ok && data.success) {
-        alert(" Registration successful: " + data.message);
+        toast.success(" Registration successful: ");
+
+        setFormData({
+          name: "",
+          business_name: "",
+          address: "",
+          email: "",
+          mobile: "",
+          area: "",
+          district: "",
+          password: "",
+        });
+
+        setAreas([]);
       } else {
-        console.log(" Registration failed:", data);
         const extractErrorMessages = (obj) => {
           if (!obj || typeof obj !== "object") return "Unknown error";
           const messages = Object.values(obj).flat();
           return messages.join(", ");
         };
-
         const errorMessage = extractErrorMessages(data.message);
-        throw new Error(errorMessage || "Unauthorized or invalid request");
+        toast.error("" + (errorMessage || "Unauthorized or invalid request"));
       }
     } catch (error) {
-      console.error(" Submit error:", error);
-      alert("Something went wrong: " + error.message);
+      toast.error(" Something went wrong: " + error.message);
     }
   };
 
   return (
     <div className="pt-20 px-4">
-      <ToastContainer/>
+      <ToastContainer position="top-right" autoClose={3000} />
       <div className="min-h-screen flex flex-col items-center justify-center py-6">
         <div className="w-full md:w-[40%]">
-          <a href="javascript:void(0)">
-            <Image
-              src="/img/signup.png"
-              alt="logo"
-              className="w-20 mb-3 mx-auto block"
-              width={500}
-              height={500}
-            />
-          </a>
+          <Image
+            src="/img/signup.png"
+            alt="logo"
+            className="w-20 mb-3 mx-auto block"
+            width={500}
+            height={500}
+          />
 
           <h2 className="text-gray-900 text-center text-3xl font-semibold">
             {tSignUp("title")}
           </h2>
 
           <div className="mt-12 space-y-6">
-            {/* Name */}
             <div className="relative flex items-center">
               <input
                 type="text"
@@ -272,7 +309,10 @@ const SignUp = () => {
                 rows="3"
                 className="w-full border border-gray-300 px-4 py-3 rounded-md outline-[#00b795]"
               />
-              <FaLocationDot className="absolute right-4 text-gray-400" size={20} />
+              <FaLocationDot
+                className="absolute right-4 text-gray-400"
+                size={20}
+              />
             </div>
 
             {/* Email */}
@@ -300,34 +340,50 @@ const SignUp = () => {
               />
               <FiPhone className="absolute right-4 text-gray-400" size={20} />
             </div>
-
-            {/* Area & District */}
-            <div className="flex gap-3">
+            <div className="flex gap-5">
+              {/* District Dropdown */}
               <div className="relative flex items-center w-full">
-                <input
-                  type="text"
-                  name="area"
-                  value={formData.area}
-                  onChange={handleChange}
-                  placeholder={tSignUp("area_label_one")}
-                  className="w-full border border-gray-300 px-4 py-3 rounded-md outline-[#00b795]"
-                />
-                <PiMapPinSimpleAreaFill className="absolute right-4 text-gray-400" size={20} />
-              </div>
-              <div className="relative flex items-center w-full">
-                <input
-                  type="text"
+                <select
                   name="district"
                   value={formData.district}
                   onChange={handleChange}
-                  placeholder={tSignUp("area_label_two")}
                   className="w-full border border-gray-300 px-4 py-3 rounded-md outline-[#00b795]"
+                >
+                  <option value="">{tSignUp("area_label_two")}</option>
+                  {districts.map((dist) => (
+                    <option key={dist.id} value={dist.id}>
+                      {dist.name}
+                    </option>
+                  ))}
+                </select>
+                <PiMapPinSimpleAreaFill
+                  className="absolute right-4 text-gray-400"
+                  size={20}
                 />
-                <PiMapPinSimpleAreaFill className="absolute right-4 text-gray-400" size={20} />
+              </div>
+
+              {/* Area Dropdown */}
+              <div className="relative flex items-center w-full">
+                <select
+                  name="area"
+                  value={formData.area}
+                  onChange={handleChange}
+                  className="w-full border border-gray-300 px-4 py-3 rounded-md outline-[#00b795]"
+                >
+                  <option value="">{tSignUp("area_label_one")}</option>
+                  {areas.map((area) => (
+                    <option key={area.id} value={area.area}>
+                      {area.area}
+                    </option>
+                  ))}
+                </select>
+                <PiMapPinSimpleAreaFill
+                  className="absolute right-4 text-gray-400"
+                  size={20}
+                />
               </div>
             </div>
-
-            {/* Password */}
+            {/* Password*/}
             <div className="relative flex items-center">
               <input
                 type="password"
@@ -339,8 +395,6 @@ const SignUp = () => {
               />
               <FiLock className="absolute right-4 text-gray-400" size={20} />
             </div>
-
-            {/* Submit Button */}
             <div>
               <button
                 type="button"
@@ -349,7 +403,6 @@ const SignUp = () => {
               >
                 {tSignUp("signupButton")}
               </button>
-
               <p className="text-center mt-1 text-gray-800 text-md">
                 {tSignUp("accountLabelOne")}
                 <span className="font-semibold hover:text-[#00b795] cursor-pointer px-1">
