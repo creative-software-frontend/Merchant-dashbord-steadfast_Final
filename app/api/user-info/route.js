@@ -3,7 +3,7 @@ import axios from "axios";
 
 export async function GET(request) {
   try {
-    const response = await axios.get("https://system.packnexa.com/api/user-info", {
+    const response = await axios.get(`${process.env.NEXT_PUBLIC_MERCHANT_API_KEY}/user-info`, {
       headers: {
         Authorization: `Bearer ${process.env.PACKNEXA_TOKEN}`, 
       },

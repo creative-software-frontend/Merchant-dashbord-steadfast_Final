@@ -17,7 +17,7 @@ const DeliveryTable = () => {
     const fetchDistricts = async () => {
       try {
         const response = await axios.get(
-          "https://system.packnexa.com/api/distList"
+          `${process.env.NEXT_PUBLIC_MERCHANT_API_KEY}/distList`
         );
         if (response.data.Status) {
           setDistricts(response.data.data);

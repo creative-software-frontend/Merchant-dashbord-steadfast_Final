@@ -6,7 +6,7 @@ export async function POST(req) {
     const body = await req.json();
 
     const response = await axios.post(
-      "https://system.packnexa.com/api/pick-up-request",
+      `${process.env.NEXT_PUBLIC_MERCHANT_API_KEY}/pick-up-request`,
       {
         pick_up_address: body.pick_up_address,
         Note: body.Note,

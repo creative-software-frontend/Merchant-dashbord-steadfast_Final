@@ -9,7 +9,7 @@ export async function GET(req) {
   }
 
   try {
-    const response = await fetch("https://system.packnexa.com/api/confirm-orders-list", {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_MERCHANT_API_KEY}/confirm-orders-list`, {
       method: "GET",
       headers: {
         Authorization: `Bearer ${token}`,

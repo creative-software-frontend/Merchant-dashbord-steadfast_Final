@@ -171,7 +171,7 @@ const SignUp = () => {
 
   useEffect(() => {
     const fetchDistricts = async () => {
-      const res = await fetch("https://system.packnexa.com/api/distList");
+      const res = await fetch(`${process.env.NEXT_PUBLIC_MERCHANT_API_KEY}/distList`);
       const data = await res.json();
       if (data.Status) {
         setDistricts(data.data);
@@ -184,7 +184,7 @@ const SignUp = () => {
     const fetchAreas = async () => {
       if (formData.district) {
         const res = await fetch(
-          `https://system.packnexa.com/api/dist-area?id=${formData.district}`
+          `${process.env.NEXT_PUBLIC_MERCHANT_API_KEY}/dist-area?id=${formData.district}`
         );
         const data = await res.json();
         if (data.Status) {
@@ -215,7 +215,7 @@ const SignUp = () => {
       form.append("category", "courier");
 
       const res = await fetch(
-        "https://system.packnexa.com/api/register-merchant",
+        `${process.env.NEXT_PUBLIC_MERCHANT_API_KEY}/register-merchant`,
         {
           method: "POST",
           headers: {

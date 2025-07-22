@@ -305,7 +305,7 @@ const Login = () => {
     setLoading(true);
 
     try {
-      const res = await fetch("https://system.packnexa.com/api/login", {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_MERCHANT_API_KEY}/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
