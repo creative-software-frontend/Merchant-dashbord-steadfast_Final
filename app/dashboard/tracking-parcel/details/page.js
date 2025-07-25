@@ -1,21 +1,23 @@
+
 'use client';
 import ParcelDetails from '@/app/components/tracking-parcel/ParcelDetails';
 import { useSearchParams } from 'next/navigation';
 
-
 const ParcelDetailsPage = () => {
   const searchParams = useSearchParams();
-  const phone = searchParams.get('phone');
+  const tracking_id = searchParams.get('tracking_id');
 
-  if (!phone) {
+  if (!tracking_id) {
     return (
       <div className="text-center mt-10 text-red-500">
-        No phone number provided in query.
+        No tracking ID provided in query.
       </div>
     );
   }
 
-  return <ParcelDetails phone={phone} />;
+  return <ParcelDetails tracking_id={tracking_id} />;
 };
 
 export default ParcelDetailsPage;
+
+

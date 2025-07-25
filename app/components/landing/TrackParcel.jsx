@@ -1,12 +1,35 @@
+"use client";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 const TrackParcel = () => {
-   const tParcel = useTranslations('homePage.trackParcelSection');
+  const tParcel = useTranslations("homePage.trackParcelSection");
+  const [query, setQuery] = useState("");
+  const router = useRouter();
+
+  const handleSearch = () => {
+    if (!query.trim()) return;
+    router.push(
+      `/dashboard/tracking-parcel/details?tracking_id=${encodeURIComponent(
+        query
+      )}`
+    );
+    setQuery("");
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      handleSearch();
+    }
+  };
+
   return (
     <div className="px-3 -mt-10 scroll-mt-24" id="track_parcel">
       <div className="p-6 rounded-md mb-4 flex flex-col md:flex-row items-center justify-center border border-gray md:w-[70%] container mx-auto bg-primary">
         <div className="md:mr-7 mb-4 md:mb-0 text-center md:text-left text-primary">
-           {tParcel('title')}
+          {tParcel("title")}
         </div>
 
         <div className="w-full md:w-[60%] flex flex-col md:flex-row">
@@ -19,19 +42,23 @@ const TrackParcel = () => {
               className="absolute top-4 left-3 text-secondary"
             />
             <input
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              onKeyDown={handleKeyDown}
               type="text"
               name="text"
               id="text"
-              placeholder= {tParcel('inputLabel')}
+              placeholder={tParcel("inputLabel")}
               className="w-full text-[14px] border border-gray rounded-b-md md:rounded-r-none rounded-t-md md:rounded-tr-none md:rounded-l-md outline-none pl-10 pr-4 py-3 focus:border-primary  transition-colors duration-300"
             />
           </div>
 
           <button
+            onClick={handleSearch}
             className="w-full md:w-[40%] font-medium text-[14px] cursor-pointer hover:bg-[#e5f7f4] text-primary-active  border border-[#00b795] rounded-b-md md:rounded-bl-none md:rounded-r-md 
                     rounded-t-md md:rounded-l-none outline-none px-4 py-3 md:py-0 transition-colors duration-300"
           >
-           {tParcel('button')}
+            {tParcel("button")}
           </button>
         </div>
       </div>

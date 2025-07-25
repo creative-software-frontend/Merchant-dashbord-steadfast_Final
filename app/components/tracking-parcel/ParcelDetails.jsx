@@ -1,6 +1,39 @@
+"use client";
 import { FaPhoneAlt, FaCheckCircle } from "react-icons/fa";
+import { useEffect, useState } from "react";
 
-export default function ParcelDetails({ phone }) {
+export default function ParcelDetails({ tracking_id }) {
+  const [details, setDetails] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    const fetchDetails = async () => {
+      try {
+        const res = await fetch(`/api/track?search=${tracking_id}`);
+        const result = await res.json();
+
+        if (result?.error) {
+          setError(result.error);
+        } else {
+          setDetails(result);
+        }
+      } catch (err) {
+        console.error("Fetch failed:", err);
+        setError("Something went wrong while fetching data.");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    if (tracking_id) fetchDetails();
+  }, [tracking_id]);
+
+  if (loading) return <div className="text-center mt-10">Loading...</div>;
+  if (error)
+    return <div className="text-center mt-10 text-red-500">{error}</div>;
+  if (!details) return null;
+
   const trackingUpdates = [
     {
       date: "Apr 24, 2025",
@@ -32,7 +65,9 @@ export default function ParcelDetails({ phone }) {
   return (
     <div className="max-w-6xl mx-auto md:p-6">
       <div className=" md:flex justify-between items-center mb-4">
-        <h2 className="text-lg font-semibold">Parcel id: #31816966</h2>
+        <h2 className="text-lg font-semibold">
+          Parcel id: {details.tracking_id}
+        </h2>
         <div className="flex flex-wrap gap-2 pt-1.5 md:pt-0">
           <button className="button-primary cursor-pointer text-white px-3 py-1 rounded">
             Open Support Ticket
@@ -82,7 +117,7 @@ export default function ParcelDetails({ phone }) {
               <strong>Approved at:</strong> April 13, 2025 10:03 PM
             </p>
             <p>
-              <strong>Weight:</strong> 0.20 kg
+              <strong>Weight:</strong> {details.weight}
             </p>
             <p>
               <strong>Total Item:</strong> 1
@@ -108,16 +143,16 @@ export default function ParcelDetails({ phone }) {
         {/* Customer Info */}
         <div className="space-y-2 text-sm">
           <p>
-            <strong>Name:</strong> [N/A]
+            <strong>Name:</strong> {details.customer_name}
           </p>
           <p>
-            <strong>Address:</strong> রামনগর, সোনারগাঁও, নারায়ণগঞ্জ
+            <strong>Address:</strong> {details.customer_address}
           </p>
           <p>
-            <strong>Police Station:</strong> Sonargaon, Narayanganj
+            <strong>Police Station:</strong> {details.police_station}
           </p>
           <p className="flex items-center gap-2">
-            <strong>Phone Number:</strong> 01587512345
+            <strong>Phone Number:</strong> {details.customer_phone}
             <button className="button-primary cursor-pointer text-white px-2 py-1 rounded flex items-center text-xs">
               <FaPhoneAlt className="mr-1" /> Call
             </button>
@@ -176,26 +211,3 @@ export default function ParcelDetails({ phone }) {
     </div>
   );
 }
-
-
-
-
-
-
-
-
-
-
-
-
-// // components/OrderDetails.jsx
-// const OrderDetails = ({ order }) => (
-//   <div className="mt-6 p-4 border rounded bg-white shadow">
-//     <h2 className="text-lg font-bold mb-2">Order Details</h2>
-//     {Object.entries(order).map(([key, value]) => (
-//       <p key={key}><strong>{key}:</strong> {typeof value === 'object' ? JSON.stringify(value) : value}</p>
-//     ))}
-//   </div>
-// );
-// export default OrderDetails;
-

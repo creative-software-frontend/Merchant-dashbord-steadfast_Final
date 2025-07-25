@@ -34,7 +34,7 @@ const mainItems = [
 ];
 
 const otherItems = [
-  { icon: FaDatabase, label: "Api", href: "/dashboard/user/api" },
+  { icon: FaDatabase, label: "Api", href: "/dashboard/user/apikey" },
   { icon: FiSettings, label: "Setting", href: "/dashboard/user/profile" },
   { icon: TbLockPassword, label: "Change Password", href: "/dashboard/user/change-password" },
   { icon: FaArrowRightFromBracket, label: "Logout", href: "/dashboard/logout" },

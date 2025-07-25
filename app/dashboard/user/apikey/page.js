@@ -1,5 +1,5 @@
-import Button from "@/app/components/api/Button";
-import OthersTools from "@/app/components/api/OthersTools";
+import Button from "@/app/components/apikey/Button";
+import OthersTools from "@/app/components/apikey/OthersTools";
 import FloatingTab from "@/app/components/consignments/FloatingTab";
 
 
