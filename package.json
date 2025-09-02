@@ -3,16 +3,16 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
+    "dev": "next dev -p 8800",
     "build": "next build",
-    "start": "next start",
+    "start": "next start -p 8800",
     "lint": "next lint"
   },
   "dependencies": {
     "@formatjs/intl-localematcher": "^0.6.1",
     "axios": "^1.10.0",
     "negotiator": "^1.0.0",
-    "next": "15.3.1",
+    "next": "^15.5.2",
     "next-intl": "^4.1.0",
     "react": "^19.0.0",
     "react-datepicker": "^8.4.0",
