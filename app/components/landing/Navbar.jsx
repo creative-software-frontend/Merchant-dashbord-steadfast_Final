@@ -46,7 +46,7 @@ const Navbar = () => {
                   className="cursor-pointer w-28 md:w-52"
                   src="/img/logo.png"
                   width={200}
-                  height={100}
+                  height={50}
                   alt="Logo"
                 />
               </Link>
